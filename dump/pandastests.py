@@ -1,3 +1,5 @@
+#Extracts to .csv an html table
+
 import requests
 import pandas as pd
 
