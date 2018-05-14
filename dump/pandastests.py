@@ -2,14 +2,15 @@
 
 import requests
 import pandas as pd
-filenumber = 1
 
+filenumber = 1
 url = 'https://www.bonusbagging.co.uk/oddsmatching.php'
+
 html = requests.get(url).content
 df_list = pd.read_html(html)
 df = df_list[-1]
 print (df)
-df.to_csv("MB_" + string(filenumber)  + ".csv")
+df.to_csv("MB_" + str(filenumber)  + ".csv")
 
 
 # to take data: 
