@@ -1,0 +1,12 @@
+sqlite> create TABLE CORAL(Rating, Sport, Date, Time, Event, Outcome, Market, Bookmaker, Back, Lay, Exchange);
+sqlite> .separator ","
+sqlite> .import CORAL1527019450.csv CORAL
+
+sqlite> create table CB as
+   ...> select * from CORAL
+   ...> where Exchange is 'Betfair';
+
+sqlite> .headers on
+sqlite> .mode csv
+sqlite> .output CORALBETFAIR.csv
+sqlite> select * from CB;
