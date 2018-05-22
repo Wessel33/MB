@@ -10,11 +10,11 @@ driver = webdriver.Chrome(r"/usr/local/bin/chromedriver")
 driver.get("https://bonusbagging.co.uk/oddsmatching.php"); #go to site
 main_window = driver.current_window_handle
 driver.switch_to_window(main_window)
-time.sleep(2) # Let the user actually see something!
+time.sleep(0.25) # Let the user actually see something!
 search_box = driver.find_element_by_id("bookmakers_select") #find drop down box
 search_box.send_keys(bookmaker) #choose bookmaker
 driver.find_element_by_id("select_button").click() #search
-time.sleep(2) # Let the user actually see something!
+time.sleep(0.25) # Let the user actually see something!
 
 t = str(time.time())
 
@@ -69,10 +69,10 @@ with open(bookmaker.upper() + t[:t.index('.')] + ".csv", 'w') as csvfile:
                 tablehtml = tablehtml[tablehtml.index('<tr'):]
             except:
                 break
-        time.sleep(1)
+        time.sleep(0.25)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         driver.find_element_by_id("data_table_next").click() #next page
-        time.sleep(1)
+        time.sleep(0.25)
     tablehtml = driver.find_element_by_id('data_table').get_attribute('innerHTML')
     tablehtml = tablehtml[tablehtml.index('<tbody>'):]
     while True:
@@ -121,5 +121,5 @@ with open(bookmaker.upper() + t[:t.index('.')] + ".csv", 'w') as csvfile:
         except:
             break
 print('done')
-time.sleep(3) 
+time.sleep(0.25) 
 driver.quit() #closes window
